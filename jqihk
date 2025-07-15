@@ -1,0 +1,50 @@
+-- LocalScript inside StarterGui.ScreenGui
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
+
+-- 画面GUIを作成
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ScriptLauncherGui"
+screenGui.Parent = PlayerGui
+
+-- ボタンを作成する関数
+local function createButton(name, position, text)
+    local button = Instance.new("TextButton")
+    button.Name = name
+    button.Size = UDim2.new(0, 150, 0, 50)
+    button.Position = position
+    button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    button.TextColor3 = Color3.new(1,1,1)
+    button.Font = Enum.Font.SourceSansBold
+    button.TextSize = 18
+    button.Text = text
+    button.Parent = screenGui
+    return button
+end
+
+-- スクリプトを実行する関数(例としてHttpGetで外部スクリプトをロード)
+local function runScript(url)
+    local success, result = pcall(function()
+        loadstring(game:HttpGet(url))()
+    end)
+    if not success then
+        warn("スクリプトの実行に失敗しました: "..tostring(result))
+    end
+end
+
+-- ボタン1: サンプルスクリプト1起動
+local btn1 = createButton("Button1", UDim2.new(0, 50, 0, 100), "Fly")
+btn1.MouseButton1Click:Connect(function()
+    runScript("loadstring(game:HttpGet("https://raw.githubusercontent.com/aaaa45451619/Fly-191919999/refs/heads/%E3%83%A1%E3%82%A4%E3%83%B3/%E9%9B%AA%E8%A6%8B%E3%81%A0%E3%81%84%E3%81%B5%E3%81%8F%E3%81%AE%E7%A9%BA%E7%AE%B1%E3%81%89%E3%81%89"))()
+")
+end)
+
+-- ボタン2: サンプルスクリプト2起動
+local btn2 = createButton("Button2", UDim2.new(0, 50, 0, 170), "iyきどう")
+btn2.MouseButton1Click:Connect(function()
+    runScript("loadstring(game:HttpGet("https://raw.githubusercontent.com/aaaa45451619/Fly-191919999/refs/heads/%E3%83%A1%E3%82%A4%E3%83%B3/%E9%9B%AA%E8%A6%8B%E3%81%A0%E3%81%84%E3%81%B5%E3%81%8F%E3%81%AE%E7%A9%BA%E7%AE%B1%E3%81%89%E3%81%89"))()
+")
+end)
+　　　　　　　　　　　　
